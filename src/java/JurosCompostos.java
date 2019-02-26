@@ -42,10 +42,10 @@ public class JurosCompostos extends HttpServlet {
             out.println("<h1>Cálculo de Montante com Juros Composto</h1>");
             
             out.println("<form>");
-            out.println("capital inicial<br><input type='number' min='0' step='.01' name='c'/><br>");
-            out.println("<br>taxa de juros<br><input type='number' min='0' step='.01' name='j'/><br>");
-            out.println("<br>tempo de aplicação<br><input type='number' min='0' step='.01' name='t'/><br>");
-            out.println("<br><input type='submit' name='botao' value='cálcular'/><br>");
+            out.println("Capital inicial<br><input type='number' min='0' step='.01' name='c'/><br>");
+            out.println("<br>Taxa de juros<br><input type='number' min='0' step='.01' name='j'/><br>");
+            out.println("<br>Tempo de aplicação<br><input type='number' min='0' step='.01' name='t'/><br>");
+            out.println("<br><input type='submit' name='botao' value='Calcular'/><br>");
             out.println("</form>");
             
             double c, j, t, m;
@@ -54,13 +54,29 @@ public class JurosCompostos extends HttpServlet {
                 c = Double.parseDouble(request.getParameter("c"));
                 j = Double.parseDouble(request.getParameter("j"));
                 t = Double.parseDouble(request.getParameter("t"));
-                
-                m = c * Math.pow((1 + j/100), t);
-                
+    
                 Locale.setDefault(new Locale("pt", "BR"));
                 DecimalFormat df = new DecimalFormat();
                 df.applyPattern("R$ #,##0.00");
-                out.println("<br><br>montante= " + df.format(m));
+
+                out.println("<table cellpadding='15'>");
+                out.println("<tr>");
+                out.println("<th>Capital</th>");
+                out.println("<th>Mês</th>");
+                out.println("</tr>");
+                
+                double montante;
+                
+                for(int mes = 1; mes <= t; mes++){
+                    montante = c * Math.pow((1 + j/100), mes);
+
+                    out.println("<tr>");
+                    out.println("<td>" + df.format(montante) + "</td>");
+                    out.println("<td>" + mes + "</td>");
+                    out.println("</tr>");
+                }
+                
+                out.println("</table>");
             }
             out.println("</body>");
             out.println("</html>");
