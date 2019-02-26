@@ -42,9 +42,9 @@ public class JurosSimples extends HttpServlet {
             out.println("<h1>Cálculo de Montante com Juros Simples</h1>");
             
             out.println("<form>");
-            out.println("capital inicial<br><input type='number' min='0' step='.01' name='c'/><br>");
-            out.println("<br>taxa de juros<br><input type='number' min='0' step='.01' name='j'/><br>");
-            out.println("<br>tempo de aplicação<br><input type='number' min='0' step='.01' name='t'/><br>");
+            out.println("Capital inicial<br><input type='number' min='0' step='.01' name='c'/><br>");
+            out.println("<br>Taxa de juros<br><input type='number' min='0' step='.01' name='j'/><br>");
+            out.println("<br>Tempo de aplicação<br><input type='number' min='0' step='.01' name='t'/><br>");
             out.println("<br><input type='submit' name='botao' value='cálcular'/><br>");
             out.println("</form>");
             
@@ -60,8 +60,9 @@ public class JurosSimples extends HttpServlet {
                 Locale.setDefault(new Locale("pt", "BR"));
                 DecimalFormat df = new DecimalFormat();
                 df.applyPattern("R$ #,##0.00");
-                out.println("<br><br>montante= " + df.format(m));
+                out.println("<br><br>Montante= " + df.format(m));
             }             
+            out.println("<h3><a href='index.html'>Home</a></h3>");
             out.println("</body>");
             out.println("</html>");
         }

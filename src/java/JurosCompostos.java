@@ -78,6 +78,7 @@ public class JurosCompostos extends HttpServlet {
                 
                 out.println("</table>");
             }
+            out.println("<h3><a href='index.html'>Home</a></h3>");
             out.println("</body>");
             out.println("</html>");
         }
